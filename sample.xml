@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><html><body><feed xml:lang="en-ca" xmlns="http://www.w3.org/2005/Atom">
+<!--
+This is a data file that is meant to be read by RSS readers or aggregators.
+See https://www.canada.ca/en/environment-climate-change/services/weather-general-tools-resources/ways-to-access-forecasts.html to learn more about our RSS service.
+-->
+<title>Moncton - Weather - Environment Canada</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" rel="related" type="text/html"/>
+<link href="https://www.weather.gc.ca/rss/city/nb-36_e.xml" rel="self" type="application/atom+xml"/>
+<link href="https://www.meteo.gc.ca/rss/city/nb-36_f.xml" hreflang="fr-ca" rel="alternate" type="application/atom+xml"/>
+<author>
+<name>Environment Canada</name>
+<uri>https://www.weather.gc.ca</uri>
+</author>
+<updated>2021-04-22T13:35:51Z</updated>
+<id>tag:weather.gc.ca,2013-04-16:20210422133551</id>
+<logo>https://www.weather.gc.ca/template/gcweb/v5.0.1/assets/wmms-alt.png</logo>
+<icon>https://www.weather.gc.ca/template/gcweb/v5.0.1/assets/favicon.ico</icon>
+<rights>Copyright 2021, Environment Canada</rights>
+<entry>
+<title>No watches or warnings in effect, Moncton</title>
+<link href="https://www.weather.gc.ca/warnings/index_e.html" type="text/html"/>
+<updated>2021-04-02T02:07:00Z</updated>
+<published>2021-04-02T02:07:00Z</published>
+<category term="Warnings and Watches"></category>
+<summary type="html">No watches or warnings in effect.</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_w1:20210402020700</id>
+</entry>
+<entry>
+<title>Current Conditions: Mostly Cloudy, 13.0°C</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T13:34:00Z</updated>
+<published>2021-04-22T13:34:00Z</published>
+<category term="Current Conditions"></category>
+<summary type="html">Observed at: Greater Moncton Roméo LeBlanc Int'l Airport 10:34 AM ADT Thursday 22 April 2021 <br/>
+<b>Condition:</b> Mostly Cloudy <br/>
+<b>Temperature:</b> 13.0°C <br/>
+<b>Pressure / Tendency:</b> 98.6 kPa falling<br/>
+<b>Visibility:</b> 24.1 km<br/>
+<b>Humidity:</b> 90 %<br/>
+<b>Dewpoint:</b> 11.3°C <br/>
+<b>Wind:</b> S 25 km/h gust 47 km/h<br/>
+<b>Air Quality Health Index:</b> 2 <br/>
+]]&gt;</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_cc:20210422133400</id>
+</entry>
+<entry>
+<title>Thursday: Rain. High 12 with temperature falling to plus 3 this afternoon.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Rain. Risk of a thundershower late this morning. Fog patches dissipating this afternoon. Amount 5 to 10 mm. Wind south 20 km/h gusting to 40 becoming light this morning. Wind becoming southwest 40 gusting to 60 except gusting to 80 in the Tantramar Marsh area late this afternoon. High 12 with temperature falling to plus 3 this afternoon. UV index 1 or low. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc1:20210422080000</id>
+</entry>
+<entry>
+<title>Thursday night: Rain mixed with snow. Low minus 1.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Rain and flurries ending this evening then cloudy. Wind southwest 40 km/h gusting to 60 except gusting to 80 in the Tantramar Marsh area. Low minus 1. Wind chill minus 9 overnight. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc2:20210422080000</id>
+</entry>
+<entry>
+<title>Friday: Flurries or rain showers. High plus 5.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Mainly cloudy. Flurries in the morning then 60 percent chance of rain showers or flurries in the afternoon. Wind southwest 40 km/h gusting to 60 except gusting to 80 in the Tantramar Marsh area early in the morning. Wind becoming southwest 20 gusting to 40 in the morning. High plus 5. UV index 4 or moderate. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc3:20210422080000</id>
+</entry>
+<entry>
+<title>Friday night: Cloudy periods. Low plus 3.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Cloudy periods. Low plus 3. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc4:20210422080000</id>
+</entry>
+<entry>
+<title>Saturday: Sunny. High 15.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Sunny. High 15. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc5:20210422080000</id>
+</entry>
+<entry>
+<title>Saturday night: Clear. Low plus 1.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Clear. Low plus 1. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc6:20210422080000</id>
+</entry>
+<entry>
+<title>Sunday: Cloudy. High 16.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Cloudy. High 16. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc7:20210422080000</id>
+</entry>
+<entry>
+<title>Sunday night: Periods of rain. Low plus 5.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Periods of rain. Low plus 5. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc8:20210422080000</id>
+</entry>
+<entry>
+<title>Monday: Periods of rain. High 8.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Periods of rain. High 8. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc9:20210422080000</id>
+</entry>
+<entry>
+<title>Monday night: Showers. Low plus 1.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Showers. Low plus 1. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc10:20210422080000</id>
+</entry>
+<entry>
+<title>Tuesday: A mix of sun and cloud. High 11.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">A mix of sun and cloud. High 11. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc11:20210422080000</id>
+</entry>
+<entry>
+<title>Tuesday night: Cloudy periods. Low plus 2.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">Cloudy periods. Low plus 2. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc12:20210422080000</id>
+</entry>
+<entry>
+<title>Wednesday: A mix of sun and cloud. High 13.</title>
+<link href="https://www.weather.gc.ca/city/pages/nb-36_metric_e.html" type="text/html"/>
+<updated>2021-04-22T08:00:00Z</updated>
+<published>2021-04-22T08:00:00Z</published>
+<category term="Weather Forecasts"></category>
+<summary type="html">A mix of sun and cloud. High 13. Forecast issued 05:00 AM ADT Thursday 22 April 2021</summary>
+<id>tag:weather.gc.ca,2013-04-16:nb-36_fc13:20210422080000</id>
+</entry>
+</feed>
+</body></html>
