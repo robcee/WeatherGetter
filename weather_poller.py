@@ -29,7 +29,7 @@ import sched, time
 import math
 import subprocess
 
-from Moncton import WeatherGetter
+from WeatherGetter import WeatherGetter
 
 def get_document_contents(address):
     with urllib.request.urlopen(address) as response:
