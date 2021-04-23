@@ -2,9 +2,19 @@
 
 from urllib3 import PoolManager
 from bs4 import BeautifulSoup
-import re
 
+"""
+WeatherGetter: retrieve, and store parsed XML data in a more comfortable interface.
 
+version 0.1.0: initial version.
+"""
+
+__desc__ = """
+Moncton.py: retrieve, and store parsed XML data in a more comfortable interface.
+
+USAGE: from Moncton.py import WeatherGetter, or run it from the command line to
+    display current conditions.
+"""
 
 class WeatherGetter:
     """A simple WeatherGetter class to fetch the weather for a given URL
@@ -18,8 +28,10 @@ class WeatherGetter:
         self.http = PoolManager()
         self.location = self.moncton # TODO generic
         self.weather = ''
+        self.lastUpdated = ''
         self.warnings = ''
         self.condition = ''
+        self.lastUpdated = ''
         self.forecasts = []
 
     def get_page(self):
@@ -39,12 +51,18 @@ class WeatherGetter:
         """Return the text of the current weather condition, otherwise empty string"""
 
         return self.condition
+    
+    def get_last_updated(self):
+        return self.lastUpdated
    
     def parse_weather(self):
         """private method, used to parse weather page and extract current conditions and alerts"""
 
         if not self.weather:
             return False
+        
+        self.lastUpdated = self.weather.find("updated").get_text()
+
         entries = self.weather.find_all("entry")
 
         self.warnings = ''
@@ -72,6 +90,7 @@ def main(args):
     wg = WeatherGetter()
     if wg.get_page():
         if wg.parse_weather():
+            print(f"Last Updated: {wg.get_last_updated()}")
             print(f"Warnings: {wg.get_warning()}")
             print(f"Current Conditions: {wg.get_condition()}")
         else:
