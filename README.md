@@ -6,6 +6,22 @@ requires a running Redis server, Python 3.7+, Redis-py, e.g., pip install redis.
 
 see [requirements.txt](requirements.txt) for additional PyPi packages.
 
+## running a test
+
+You will need to ensure the packages listed in requirements.txt are installed.
+
+```
+beautifulsoup4==4.9.3
+lxml==4.6.3
+python-dateutil==2.8.1
+redis==3.5.3
+urllib3==1.26.4
+```
+
+Install them with pip [package_name]. I recommend using a [python venv](https://docs.python.org/3/library/venv.html) for this.
+
+If you want to run this to try it out, `python weather_poller.py` from this directory will run once and exit, printing some output to the console. (note, you may have to run python3 if you don't have an alias or link for that on your system).
+
 ## installation as a systemd service
 
 Assuming you are running this as `ubuntu` user, with a virtual environment setup under `~/.venvs/default/`, and your script is installed under `~/Projects/weather_poller`,
@@ -28,7 +44,7 @@ WantedBy=multi-user.target
 
 After installation, run `sudo systemctl daemon-reload` to pick up the changes, then `sudo systemctl start weather_poller.service` (assuming that's the name you gave it).
 
-You can be sure it's running by checking `sudo systemctl status weather_poller` and `sudo journalctl weather_poller` (verify this) for details.
+You can be sure it's running by checking `sudo systemctl status weather_poller` and `sudo journalctl -e -u weather_poller` for details.
 
 When satisfied that everything is working as intended, you can permanently install the temperature monitor by entering `sudo systemctl enable weather_poller`.
 
