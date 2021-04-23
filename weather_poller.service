@@ -1,0 +1,12 @@
+[Unit]
+Description=Weather Poller Service
+After=redis-server.service
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStart=/home/ubuntu/.venvs/default/bin/python /home/ubuntu/Projects/weather_poller/weather_poller.py -r -f 600 -k weather
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
