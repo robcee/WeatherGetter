@@ -28,30 +28,69 @@ import urllib.request
 import sched, time
 import math
 import subprocess
+from datetime import datetime, timedelta
+from dateutil import parser
 
 from WeatherGetter import WeatherGetter
 
-def get_document_contents(address):
-    with urllib.request.urlopen(address) as response:
-        body = response.read()
-    return body
+# Controller
 
-def write_to_redis():
-    key = args.key
-    contents = get_document_contents(args.url)
+class Controller:
+    """I am a Controller class for the WeatherGetter. I know how to update the WeatherGetter and compare dates."""
+
+    def __init__(self):
+        self.wg = WeatherGetter()
+        self.lastUpdated = datetime(1970, 1, 1, 0, 0, 0)
+        self.updated = False
     
-    r = redis.Redis(host='localhost', port=6379, db=0)
-    r.set(key + '.body', contents)
-    r.set(key + '.time', time.asctime(time.localtime()))
+    def update(self):
+        if self.wg.get_page():
+            if self.wg.parse_weather():
+                updated = True
+                print(f"Last Updated: {self.wg.get_last_updated()}")
+            else:
+                updated = False
+                print("No Weather Data")
+        
+        return updated
+    
+    def compare_date_updated(self):
+        """compare the controller's lastUpdated timestamp with timestamp from the WeatherGetter.
+        If WeatherGetter's timestamp is more recent than controller's return True. Return False otherwise.
+        """
 
-def write_to_console():
+        current = parser.parse(self.wg.get_last_updated())
+
+        return self.lastUpdated < current
+
+    def update_lastUpdated(self):
+        self.lastUpdated = parser.parse(self.wg.get_last_updated())
+    
+# Globals
+
+def write_to_redis(controller):
+    key = args.key
+    
+    controller.update()
+
+    if controller.compare_date_updated():
+        r = redis.Redis(host='localhost', port=6379, db=0)
+        r.set(key + '.lastUpdated', controller.wg.get_last_updated())
+        r.set(key + '.warnings', controller.wg.get_warning())
+        r.set(key + '.condition', controller.wg.get_condition())
+
+
+def write_to_console(controller):
     "probably no key = args.key"
-    contents = get_document_contents(args.url)
-    print("Body: {}".format(contents))
-    print("Time: {}".format(time.asctime(time.localtime())))
+    controller.update()
+
+    print(f"Last Updated: {controller.wg.get_last_updated()}")
+    print(f"warnings: {controller.wg.get_warning()}")
+    print(f"condition: {controller.wg.get_condition()}")
+
 
 def main(args):
-    """ Main entry point of the app """
+    """ Main entry point """
 
     freq = args.frequency
     scheduler = sched.scheduler()
@@ -61,15 +100,17 @@ def main(args):
     else:
         action = write_to_console
 
-    print(f"weather_poller starting up, retrieving {args.url}, storing on {args.key}")
+    print(f"weather_poller starting up, retrieving conditions for Moncton, storing on {args.key}")
     print(args)
 
+    controller = Controller()
+
     # First one is free!
-    action()
+    action(controller)
 
     while freq > 0:
         # print("weather_poller, scheduler loop tick")
-        scheduler.enter(freq, 1, action)
+        scheduler.enter(freq, 1, action, {controller: controller})
         
         scheduler.run()
 
