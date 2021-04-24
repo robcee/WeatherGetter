@@ -28,7 +28,7 @@ import urllib.request
 import sched, time
 import math
 import subprocess
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, tzinfo, timezone
 from dateutil import parser
 
 from WeatherGetter import WeatherGetter
@@ -40,7 +40,7 @@ class Controller:
 
     def __init__(self):
         self.wg = WeatherGetter()
-        self.lastUpdated = datetime(1970, 1, 1, 0, 0, 0)
+        self.lastUpdated = datetime(1970, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
         self.updated = False
     
     def update(self):
@@ -78,15 +78,18 @@ def write_to_redis(controller):
         r.set(key + '.lastUpdated', controller.wg.get_last_updated())
         r.set(key + '.warnings', controller.wg.get_warning())
         r.set(key + '.condition', controller.wg.get_condition())
+        controller.update_lastUpdated()
 
 
 def write_to_console(controller):
     "probably no key = args.key"
     controller.update()
-
-    print(f"Last Updated: {controller.wg.get_last_updated()}")
-    print(f"warnings: {controller.wg.get_warning()}")
-    print(f"condition: {controller.wg.get_condition()}")
+    print(f"Controller Updated: {controller.lastUpdated}")
+    if controller.compare_date_updated():
+        print(f"Last Updated: {controller.wg.get_last_updated()}")
+        print(f"warnings: {controller.wg.get_warning()}")
+        print(f"condition: {controller.wg.get_condition()}")
+        controller.update_lastUpdated()
 
 
 def main(args):
@@ -117,21 +120,21 @@ def main(args):
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
-    parser = argparse.ArgumentParser(usage=__desc__)
+    argparser = argparse.ArgumentParser(usage=__desc__)
 
     # Optional argument flag which defaults to False
-    parser.add_argument("-r", "--redis", help="store values in redis", action="store_true")
+    argparser.add_argument("-r", "--redis", help="store values in redis", action="store_true")
 
-    parser.add_argument("-k", "--key", help="key name to store document's contents in", type=str, default="")
+    argparser.add_argument("-k", "--key", help="key name to store document's contents in", type=str, default="")
 
     # Optional argument which requires a parameter (eg. -d test)
-    parser.add_argument("-f", "--frequency", help="set frequency in seconds, if omitted, run once and exit", type=int, default=0)
+    argparser.add_argument("-f", "--frequency", help="set frequency in seconds, if omitted, run once and exit", type=int, default=0)
 
     # Specify output of "--version"
-    parser.add_argument(
+    argparser.add_argument(
         "--version",
         action="version",
         version="%(prog)s (version {version})".format(version=__version__))
 
-    args = parser.parse_args()
+    args = argparser.parse_args()
     main(args)
