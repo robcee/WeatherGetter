@@ -84,7 +84,8 @@ class WeatherGetter:
             print(f"Unknown entry: {category}")
         
         return True
-            
+
+# Main function, primarily for testing.
 
 def main(args):
     wg = WeatherGetter()

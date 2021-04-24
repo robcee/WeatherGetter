@@ -47,10 +47,10 @@ class Controller:
         if self.wg.get_page():
             if self.wg.parse_weather():
                 updated = True
-                print(f"Last Updated: {self.wg.get_last_updated()}")
+                # print(f"Last Updated: {self.wg.get_last_updated()}")
             else:
                 updated = False
-                print("No Weather Data")
+                print("ERROR: No Weather Data!")
         
         return updated
     
@@ -70,27 +70,34 @@ class Controller:
 
 def write_to_redis(controller):
     key = args.key
-    
-    controller.update()
 
-    if controller.compare_date_updated():
-        r = redis.Redis(host='localhost', port=6379, db=0)
-        r.set(key + '.lastUpdated', controller.wg.get_last_updated())
-        r.set(key + '.warnings', controller.wg.get_warning())
-        r.set(key + '.condition', controller.wg.get_condition())
-        controller.update_lastUpdated()
+    print(f"INFO: Controller Updated: {controller.lastUpdated}")
+    if controller.update():
+        if controller.compare_date_updated():
+            r = redis.Redis(host='localhost', port=6379, db=0)
+            r.set(key + '.lastUpdated', controller.wg.get_last_updated())
+            r.set(key + '.warnings', controller.wg.get_warning())
+            r.set(key + '.condition', controller.wg.get_condition())
+            controller.update_lastUpdated()
+            print("INFO: Redis write")
+    else:
+        print("ERROR: Error fetching data, unable to write.")
 
 
 def write_to_console(controller):
     "probably no key = args.key"
-    controller.update()
-    print(f"Controller Updated: {controller.lastUpdated}")
-    if controller.compare_date_updated():
-        print(f"Last Updated: {controller.wg.get_last_updated()}")
-        print(f"warnings: {controller.wg.get_warning()}")
-        print(f"condition: {controller.wg.get_condition()}")
-        controller.update_lastUpdated()
 
+    print(f"INFO: Controller Updated: {controller.lastUpdated}")
+    if controller.update():
+        if controller.compare_date_updated():
+            print(f"Last Updated: {controller.wg.get_last_updated()}")
+            print(f"warnings: {controller.wg.get_warning()}")
+            print(f"condition: {controller.wg.get_condition()}")
+            controller.update_lastUpdated()
+    else:
+        print("ERROR: Error fetching data, no data to print")
+
+# Main function
 
 def main(args):
     """ Main entry point """
@@ -103,7 +110,7 @@ def main(args):
     else:
         action = write_to_console
 
-    print(f"weather_poller starting up, retrieving conditions for Moncton, storing on {args.key}")
+    print(f"INFO: weather_poller starting up, retrieving conditions for Moncton, storing on {args.key}")
     print(args)
 
     controller = Controller()
