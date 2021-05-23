@@ -72,7 +72,7 @@ class WeatherGetter:
         for entry in entries:
             category = entry.find("category").get("term")
             if category == 'Warnings and Watches':
-                self.warnings = entry.find("summary").get_text()
+                self.warnings = entry.find("title").get_text()
                 continue
             if category == 'Current Conditions':
                 self.condition = entry.find("summary").get_text()
